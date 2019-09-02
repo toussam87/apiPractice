@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import InitialForm from '../InitialForm/InitialForm'
 
 class UnorderedRender extends React.Component { 
     constructor(props) {
         super(props);
+
+        this.state = {
+            data: [],
+        }
     }
 
     printUnorderedData() {
@@ -15,7 +20,10 @@ class UnorderedRender extends React.Component {
 
     render() {
         return(
-            <div className="unorderedData">{this.printUnorderedData()}</div>
+            
+            <div className="unorderedData">
+                {this.printUnorderedData()}
+            </div>
         )
     }
 }

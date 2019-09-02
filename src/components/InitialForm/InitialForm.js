@@ -5,7 +5,10 @@ class InitialForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {value: ''};
+        this.state = {
+            value: '',
+            submit: false,
+            };
 
 
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -13,33 +16,30 @@ class InitialForm extends React.Component {
     }
 
     handleFormSubmit(event) {
-        event.preventDefault();
-
-        this.setState({value: event.target.value});
+        this.setState({submit: true })
+        event.preventDefault();      
     }
 
     handleInputChange(event) {
-        this.setState({value: event.target.value});
-        
+        this.setState({ value: Number(event.target.value) });
     }
 
     renderInitialForm(){
         return(
-            <div>
-                <form onSubmit={this.handleFormSubmit}>
-                    <label>
-                        Number Of People You'd Like to Query :
-                        <input type="text" value={this.state.formValue} onChange={this.handleInputChange} />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
-            </div>
-        ) 
+            <form onSubmit={this.handleFormSubmit}>
+                <label>
+                    Number Of People You'd Like to Query :
+                    <input type="text" value={this.state.value} onChange={this.handleInputChange} />
+                </label>
+                <input type="submit" value="Submit" />
+            </form>
+        );
     }
+
 
     render() {
         return (
-            this.state.value !== '' ? <DataQuestions numOfPeople={this.state.value} /> : this.renderInitialForm()
+            this.state.value !== '' && this.state.submit ? <div><DataQuestions numOfPeople={this.state.value} /> </div> : this.renderInitialForm()
         )
     }
     

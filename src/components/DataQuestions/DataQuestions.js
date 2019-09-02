@@ -28,8 +28,8 @@ class DataQuestions extends React.Component {
     render() {
         return (
             <div className="dataContainer">
-                <UnorderedRender unorderedData={this.state.data} />
                 <InitialForm />
+                <UnorderedRender unorderedData={this.state.data} />
             </div>
         )
     }
